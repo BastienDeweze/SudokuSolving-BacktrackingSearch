@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    border-spacing: 0;
+    box-sizing: border-box;
+}
+body {
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    background: #dde1e7;
+    color: #555;
+}
+.box {
+    position: relative;
+}
+form {
+    padding: 60px 35px 35px 35px;
+    border-radius: 40px;
+    box-shadow: -3px -3px 5px #ffffff73,
+                3px 3px 5px rgba(94,104,121,0.288);
+}
+.form h2 {
+    position: relative;
+    text-align: center;
+    font-size: 60px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    color: #dde1e7;
+    text-shadow: -3px -3px 5px #ffffff73,
+                3px 3px 5px rgba(94,104,121,0.288);
+}
+.form h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 40px;
+    height: 4px;
+}
+input {
+    height: 5vh;
+    width: 5vh;
+    font-size: 2vh;
+    -moz-appearance: textfield;
+    text-align: center;
+    box-shadow: inset -3px -3px 5px #ffffff73,
+                inset 3px 3px 5px rgba(94,104,121,0.288),
+                inset 3px 3px 5px rgba(255,255,255,0.1),
+                inset 3px 3px 8px rgba(0,0,0,0.1);
+    color: #5a84a2;
+    background: #dde1e7;
+}
+p {
+    height: calc(100vh/10);
+    width: calc(100vh/10);
+    background-color: #efefef;
+    -moz-appearance: textfield;
+    font-size: 6vh;
+    text-align: center;
+}
+tr:nth-of-type(3), tr:nth-of-type(6){
+    border-bottom: 3px solid #7b9aaf;
+}
+td:nth-of-type(3), td:nth-of-type(6){
+    border-right: 3px solid #7b9aaf;
+}
+tr{
+    border-bottom: 3px solid #dde1e7;
+    display: block;
+}
+td{
+    /*border-right: 3px solid #ccc;*/
+    height: 5vh;
+    width: 5vh;
+}
+table{
+    margin: 0 auto;
+    border: 3px solid #7b9aaf;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+
+}
+button{
+    display: block;
+    padding: .5em 2em;
+    margin: 1em auto 0;
+    font-size: 1.7vh;
+    padding: 10px 30px;
+    font-weight: 500;
+    text-transform: uppercase;
+    background: #dde1e7;
+    color: #7b9aaf;
+    border-radius: 40px;
+    box-shadow: -3px -3px 5px #ffffff73,
+                3px 3px 5px rgba(94,104,121,0.288),
+                inset 3px 3px 5px rgba(255,255,255,0.1),
+                3px 3px 8px rgba(0,0,0,0.15);
+}
+button:hover {
+    box-shadow: inset -3px -3px 5px #ffffff73,
+                inset 3px 3px 5px rgba(94,104,121,0.288),
+                inset 3px 3px 5px rgba(255,255,255,0.1),
+                inset 3px 3px 8px rgba(0,0,0,0.1);
+}

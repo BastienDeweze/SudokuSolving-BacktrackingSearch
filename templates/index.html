@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+
+    <meta charset="utf-8">
+    <title>Sudoku Backtracking Search</title>
+    <link rel = "stylesheet" type = "text/css" href = "{{ url_for('static', filename= 'style.css') }}"/> 
+    
+  </head>
+
+  <body>
+        <div class = "box">
+            <div class = "container">
+                <div class = "form">
+                    <h2>Sudoku</h2>
+                    <form action = "{{ url_for('Sudoku')}}" method = "post">
+                        <table>
+
+                            <tbody>
+
+                                <tr> 
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(0,0)" value = "{{assignement[(0,0)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(0,1)" value = "{{assignement[(0,1)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(0,2)" value = "{{assignement[(0,2)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(0,3)" value = "{{assignement[(0,3)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(0,4)" value = "{{assignement[(0,4)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(0,5)" value = "{{assignement[(0,5)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(0,6)" value = "{{assignement[(0,6)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(0,7)" value = "{{assignement[(0,7)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(0,8)" value = "{{assignement[(0,8)]}}"> </td>
+                                </tr>
+
+                                <tr> 
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(1,0)" value = "{{assignement[(1,0)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(1,1)" value = "{{assignement[(1,1)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(1,2)" value = "{{assignement[(1,2)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(1,3)" value = "{{assignement[(1,3)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(1,4)" value = "{{assignement[(1,4)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(1,5)" value = "{{assignement[(1,5)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(1,6)" value = "{{assignement[(1,6)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(1,7)" value = "{{assignement[(1,7)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(1,8)" value = "{{assignement[(1,8)]}}"> </td>
+                                </tr>
+
+                                <tr> 
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(2,0)" value = "{{assignement[(2,0)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(2,1)" value = "{{assignement[(2,1)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(2,2)" value = "{{assignement[(2,2)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(2,3)" value = "{{assignement[(2,3)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(2,4)" value = "{{assignement[(2,4)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(2,5)" value = "{{assignement[(2,5)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(2,6)" value = "{{assignement[(2,6)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(2,7)" value = "{{assignement[(2,7)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(2,8)" value = "{{assignement[(2,8)]}}"> </td>
+                                </tr>
+
+                                <tr> 
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(3,0)" value = "{{assignement[(3,0)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(3,1)" value = "{{assignement[(3,1)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(3,2)" value = "{{assignement[(3,2)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(3,3)" value = "{{assignement[(3,3)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(3,4)" value = "{{assignement[(3,4)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(3,5)" value = "{{assignement[(3,5)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(3,6)" value = "{{assignement[(3,6)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(3,7)" value = "{{assignement[(3,7)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(3,8)" value = "{{assignement[(3,8)]}}"> </td>
+                                </tr>
+
+                                <tr> 
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(4,0)" value = "{{assignement[(4,0)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(4,1)" value = "{{assignement[(4,1)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(4,2)" value = "{{assignement[(4,2)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(4,3)" value = "{{assignement[(4,3)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(4,4)" value = "{{assignement[(4,4)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(4,5)" value = "{{assignement[(4,5)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(4,6)" value = "{{assignement[(4,6)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(4,7)" value = "{{assignement[(4,7)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(4,8)" value = "{{assignement[(4,8)]}}"> </td>
+                                </tr>
+
+                                <tr> 
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(5,0)" value = "{{assignement[(5,0)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(5,1)" value = "{{assignement[(5,1)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(5,2)" value = "{{assignement[(5,2)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(5,3)" value = "{{assignement[(5,3)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(5,4)" value = "{{assignement[(5,4)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(5,5)" value = "{{assignement[(5,5)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(5,6)" value = "{{assignement[(5,6)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(5,7)" value = "{{assignement[(5,7)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(5,8)" value = "{{assignement[(5,8)]}}"> </td>
+                                </tr>
+
+                                <tr> 
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(6,0)" value = "{{assignement[(6,0)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(6,1)" value = "{{assignement[(6,1)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(6,2)" value = "{{assignement[(6,2)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(6,3)" value = "{{assignement[(6,3)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(6,4)" value = "{{assignement[(6,4)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(6,5)" value = "{{assignement[(6,5)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(6,6)" value = "{{assignement[(6,6)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(6,7)" value = "{{assignement[(6,7)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(6,8)" value = "{{assignement[(6,8)]}}"> </td>
+                                </tr>
+
+                                <tr> 
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(7,0)" value = "{{assignement[(7,0)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(7,1)" value = "{{assignement[(7,1)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(7,2)" value = "{{assignement[(7,2)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(7,3)" value = "{{assignement[(7,3)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(7,4)" value = "{{assignement[(7,4)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(7,5)" value = "{{assignement[(7,5)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(7,6)" value = "{{assignement[(7,6)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(7,7)" value = "{{assignement[(7,7)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(7,8)" value = "{{assignement[(7,8)]}}"> </td>
+                                </tr>
+
+                                <tr> 
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(8,0)" value = "{{assignement[(8,0)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(8,1)" value = "{{assignement[(8,1)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(8,2)" value = "{{assignement[(8,2)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(8,3)" value = "{{assignement[(8,3)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(8,4)" value = "{{assignement[(8,4)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(8,5)" value = "{{assignement[(8,5)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(8,6)" value = "{{assignement[(8,6)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(8,7)" value = "{{assignement[(8,7)]}}"> </td>
+                                    <td> <input type = "number" min = "1" max = "9" step = "1" name = "(8,8)" value = "{{assignement[(8,8)]}}"> </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                        <button name = "bouton" type="submit">Résoudre</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+  </body>
+
+</html>
