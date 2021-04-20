@@ -134,7 +134,7 @@ class Grille():
 
 def reviser(voisin : Tuple[int, int], index : Tuple[int, int], csp) -> Tuple[bool, np.ndarray] :
     change = False
-    print("in reviser")
+    
     for dom in csp.domaine_var[voisin] :
         
         if dom in csp.domaine_var[index] :
@@ -146,7 +146,7 @@ def reviser(voisin : Tuple[int, int], index : Tuple[int, int], csp) -> Tuple[boo
 
 
 def forward_checking(index : Tuple[int, int], grille, csp) -> Tuple :
-    print("in forward_checking")
+    
     csp_star = deepcopy(csp)
     for valeur, voisin in grille.get_index_voisins(index) :
         change, csp = reviser(voisin, index, csp)
@@ -166,11 +166,9 @@ def backtrack(assignation : Dict, csp , grille) :
     
     else:
         index = grille.minimum_heuristique_value()
-        print("--------------------", index)
         for val in csp.domaine_var[index] :
             
             if csp.compatible(val, index):
-                #print(val)
                 assignation[index] = val
                 grille.grille[index[0]][index[1]] = val
                 
@@ -178,12 +176,10 @@ def backtrack(assignation : Dict, csp , grille) :
                 csp_star.domaine_var[index] = [val]
                 csp_star, ok = forward_checking(index, grille, csp_star)
                 if ok :
-                    print("=============BACKTRACK")
                     resultat = backtrack(assignation, csp_star, grille)
                     if resultat is not False : 
                         return resultat
                     
-                print("=============CONFLIT")
                 assignation[index] = 0.0
                 grille.grille[index[0]][index[1]] = 0.0
                 
@@ -234,8 +230,10 @@ def Sudoku():
     assignation = BackTracking_Search(assignation, csp, grille)
     print(grille.grille)
 
-
-    return render_template("index.html", assignement = assignation)
+    if assignation is not False:
+        return render_template("index.html", assignement = assignation, message="Grille résolue")
+    else :
+        return render_template("index.html", assignement = assignation, message="Grille éronée")
 
 if __name__=='__main__':
    app.run()

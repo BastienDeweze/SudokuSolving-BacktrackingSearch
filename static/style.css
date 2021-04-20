@@ -36,6 +36,7 @@ form {
     text-shadow: -3px -3px 5px #ffffff73,
                 3px 3px 5px rgba(94,104,121,0.288);
 }
+
 .form h2::before {
     content: "";
     position: absolute;
